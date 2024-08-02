@@ -1,0 +1,333 @@
+/* Genel Stiller */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f4f4f4; 
+  color: #333;                
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 960px;        
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 15px; /* Kavisli köþeler eklendi */
+  background-color: #fff; /* Arka plan rengini beyaz yaptým */
+}
+
+/* Header */
+header {
+  background-color: #224d2a; 
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5em;
+}
+
+/* Main Content */
+main {
+  padding: 40px 0;
+}
+
+/* Search Box and Suggestions */
+.search-container {
+  position: relative; 
+  display: flex; 
+  align-items: center; 
+  width: 100%;
+  max-width: 500px; 
+  margin: 0 auto 20px;
+}
+
+/* Arama Kutusu */
+.search-box {
+  display: flex;
+  align-items: center;
+  background-color: #fff; 
+  border: 1px solid #ccc; 
+  border-radius: 15px; /* Kavis artýrýldý */
+  flex-grow: 1; 
+  margin-right: 10px; 
+  transition: box-shadow 0.3s ease;
+}
+
+.search-box:focus-within {
+  box-shadow: 0 0 15px 5px rgba(34, 139, 34, 0.8); /* Daha parlak yeþil parlama efekti */
+}
+
+.search-box input {
+  padding: 12px;
+  flex-grow: 1;          
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  border-radius: 15px; /* Kavis artýrýldý */
+}
+
+.search-icon {
+  padding: 12px;
+  background-color: #3366cc; 
+  color: white; 
+  cursor: pointer;
+  border-top-right-radius: 15px; /* Kavis artýrýldý */
+  border-bottom-right-radius: 15px; /* Kavis artýrýldý */
+  transition: background-color 0.3s ease;
+}
+
+.search-icon:hover {
+  background-color: #2952a3; 
+}
+
+/* Rastgele Kelime Butonu */
+#randomButton {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  height: 49.59px;
+  width: 45.97px;
+  margin-left: 10px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  border: 1px solid #3366cc;
+  border-radius: 15px; /* Kavis artýrýldý */
+}
+
+#randomButton img {
+  width: 24px; 
+  height: 24px;
+}
+
+/* Sonuç Alaný */
+.result {
+  text-align: left;
+  margin-top: 20px; 
+  animation: fadeIn 1s ease-in-out;
+}
+
+.result h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.result .details {
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.result .description {
+  font-size: 1rem;
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+.result .highlight { 
+  font-weight: bold;
+  color: #d9534f; /* Renk özel kelimeler için */
+}
+
+.result .error {
+  text-align: center;
+  color: #dc3545;  
+}
+
+/* Öneri Kutusu (Suggestions) */
+#suggestions {
+  position: absolute; 
+  top: 100%; 
+  left: 0;
+  width: 100%; 
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 15px; /* Kavis artýrýldý */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  max-height: 200px;
+  overflow-y: auto;
+  display: none; 
+}
+
+#suggestions.active { 
+  display: block;
+}
+
+#suggestions ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#suggestions li {
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#suggestions li:hover {
+  background-color: #f0f0f0;
+}
+
+/* Ekran Boyutuna Göre Duyarlýlýk (Responsive) */
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+  }
+
+  .search-box input {
+    width: calc(100% - 90px); /* Arama kutusu geniþliðini ayarla */
+  }
+
+  .result h3 {
+    font-size: 1.8rem;
+  }
+
+  .result .description {
+    font-size: 1rem;
+  }
+}
+
+/* Kelime Sayýsý Mesajý */
+#wordCountMessage {
+  text-align: center;
+  margin-top: 10px; 
+  font-size: 1rem; /* Daha kalýn ve belirgin font */
+  font-weight: 700; /* Kalýn font */
+  color: #666; 
+}
+
+/* Footer */
+footer {
+  background-color: #224d2a;
+  color: #666;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background-color: #303030; /* Koyu gri arka plan */
+  color: #f0f0f0; /* Açýk gri metin */
+}
+
+body.dark-mode .container {
+  background-color: #3d3d3d;
+  border-radius: 15px; /* Kavisli köþeler */
+}
+
+body.dark-mode .search-box {
+  background-color: #4d4d4d;
+  border: none; /* Kenarlýðý kaldýr */
+}
+
+body.dark-mode .search-box input {
+  background-color: #4d4d4d;
+  color: white;
+}
+
+body.dark-mode .search-box:focus-within {
+  box-shadow: 0 0 15px 5px rgba(34, 139, 34, 0.8); /* Daha parlak yeþil parlama efekti */
+}
+
+body.dark-mode #suggestions {
+  background-color: #4d4d4d;
+}
+
+body.dark-mode #suggestions li {
+  color: white;
+}
+
+body.dark-mode .result .description {
+  color: #f0f0f0;
+}
+
+body.dark-mode .search-icon {
+  background-color: #5d5d5d; /* Koyu gri */
+}
+
+body.dark-mode .search-icon:hover {
+  background-color: #6e6e6e; /* Daha koyu gri */
+}
+
+body.dark-mode #randomButton { 
+  border-color: #5D5D5D; /* Karanlýk modda koyu gri kenarlýk */
+}
+
+body.dark-mode #themeToggle img {
+  filter: none;
+}
+
+/* Tema Deðiþtirme Butonu */
+#themeToggle {
+  background: none; 
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  margin-top: 10px; 
+}
+
+#themeToggle img {
+  width: 24px; 
+  height: 24px;
+  filter: invert(1); 
+}
+
+/* Animasyonlar */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* Yukarýdan aþaðýya kayar */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* Normal konuma gelir */
+  }
+}
+
+.result {
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Dark Mode Özel Renkler */
+body.dark-mode .result h3 {
+  color: #ffffff; /* Baþlýk rengi beyaz */
+}
+
+body.dark-mode .result .highlight {
+  color: #9b59b6; /* Özel kelime rengi mor */
+}
+
+/* Özel Karakter Butonlarý */
+.special-keys {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.special-key {
+  background-color: #d9534f; /* Buton arka plan rengi */
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  margin: 0 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.special-key:hover {
+  background-color: #c13528; /* Hover rengi */
+}
